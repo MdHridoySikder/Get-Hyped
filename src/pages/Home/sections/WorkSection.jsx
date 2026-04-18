@@ -12,21 +12,21 @@ const works = [
     title: "Van nul naar vol, binnen 3 weken",
     client: "Bullit",
     color: "#FF4D00",
-    img: "https://i.imgur.com/8fKzL2P.jpeg",
+    img: "/public/Bullit _ Loop.mp4",
   },
   {
     id: 2,
     title: "Zacht in smaak, sterk in beeld",
     client: "Roasta",
     color: "#007BFF",
-    img: "https://i.imgur.com/5vX9kLm.jpeg",
+    img: "/public/roasta-loop.mp4",
   },
   {
     id: 3,
     title: "Content die écht smaakt (en raakt)",
     client: "Loco",
     color: "#00C853",
-    img: "https://i.imgur.com/3tY8pQv.jpeg",
+    img: "/public/loco-bites-loop.mp4",
   },
 ];
 
@@ -99,11 +99,8 @@ const WorkSection = () => {
   };
 
   return (
-    <section
-      ref={container}
-      className="py-24 px-6 md:px-12 w-full max-w-[1400px] mx-auto bg-[#F9F7F2] relative z-30"
-    >
-      <div className="flex flex-col md:flex-row justify-between md:items-end mb-16 gap-8 work-header">
+    <section className="py-20 px-6 md:px-12 w-full max-w-[1400px] mx-auto bg-brand-bg relative z-30">
+      <div className="flex flex-col md:flex-row justify-between md:items-end ml-20 mb-16 gap-8 work-header">
         <div className="max-w-xl">
           <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] text-black">
             Content
@@ -115,7 +112,9 @@ const WorkSection = () => {
             <br />
             een manier die écht past bij jouw
             <br />
-            doelgroep.
+            doelgroep. Met creatieve content
+            <br />
+            die werkt en het verschil maakt.
           </p>
           <a className="group mt-10 inline-flex items-center border-2 border-black rounded-2xl overflow-hidden cursor-pointer bg-transparent hover:bg-black transition-colors duration-300">
             <span className="px-6 py-3 text-sm font-bold text-black group-hover:text-white">
@@ -149,10 +148,13 @@ const WorkSection = () => {
               style={{ borderColor: work.color }}
             >
               <div className="relative aspect-[4/5.2] overflow-hidden">
-                <img
+                <video
                   src={work.img}
-                  alt={work.client}
                   className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
                 />
                 <div className="absolute inset-0 bg-black/5" />
               </div>
