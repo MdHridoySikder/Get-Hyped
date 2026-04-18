@@ -1,2 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap");
+
 @import "tailwindcss";
 @plugin "daisyui";
+
+@theme {
+  --color-brand-bg: #efebe4;
+  --color-brand-text: #1a1a1a;
+  --color-brand-text-muted: #4a4a4a;
+  --color-brand-orange: #ff5c35;
+  --color-brand-pink: #f3c0f5;
+  --color-brand-green: #30b58f;
+  --color-brand-blue: #0084f1;
+  --color-brand-footer: #ded8cd;
+
+  /* Body text */
+  --font-sans: "Outfit", sans-serif;
+
+  /* Hero headings / premium display text */
+  --font-display: "Satoshi", sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-brand-bg);
+  }
+
+  body {
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Hint compositor for animated cards */
+  .float-card {
+    will-change: transform;
+  }
+}
