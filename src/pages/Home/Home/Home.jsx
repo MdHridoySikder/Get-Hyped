@@ -14,7 +14,7 @@ const Home = () => {
       <ExpertisesSection />
       <WorkSection />
       <MarqueeSection />
-      <CTASection />
+      {/* <CTASection /> */}
     </div>
   );
 };
