@@ -58,31 +58,32 @@ const MarqueeSection = () => {
   };
 
   return (
-    <section className="mt-[-350px] mb-20 overflow-hidden bg-brand-bg relative z-30">
-      <div className="text-5xl ml-8 mb-12 font-bold">
-        <h1>
+    <section className="mt-[-200px] md:mt-[-350px] mb-20 overflow-hidden bg-brand-bg relative z-30">
+      <div className="ml-8 mb-12 font-bold  ">
+        <h1 className="text-4xl md:text-6xl leading-tight">
           These brands
-          <br />
-          got hyped.
+          <br className="hidden md:block" /> got hyped.
         </h1>
       </div>
 
       <div ref={scrollRef} className="flex relative w-full overflow-hidden">
         <div className="marquee-content flex gap-3 whitespace-nowrap min-w-full">
           {[1, 2].map((block) => (
-            <div key={block} className="flex gap-3 items-center">
+            <div key={block} className="flex gap-2 items-center">
               {brands.map((brand, index) => (
                 <div
                   key={index}
                   onMouseDown={handlePressAll}
                   onMouseUp={handleReleaseAll}
                   onMouseLeave={handleReleaseAll}
-                  className="brand-card w-65 h-65 border border-gray-400 rounded-xl flex items-center justify-center bg-brand-bg shrink-0 cursor-pointer will-change-transform"
+                  onTouchStart={handlePressAll}
+                  onTouchEnd={handleReleaseAll}
+                  className="brand-card w-32 h-32 md:w-64 md:h-64 border border-gray-400 rounded-xl flex items-center justify-center bg-brand-bg shrink-0 cursor-pointer will-change-transform"
                 >
                   <img
                     src={brand}
                     alt={`brand-${index + 1}`}
-                    className="max-w-[100%] max-h-[100%] object-contain pointer-events-none"
+                    className="max-w-[70%] max-h-[70%] md:max-w-[100%] md:max-h-[100%] object-contain pointer-events-none"
                   />
                 </div>
               ))}

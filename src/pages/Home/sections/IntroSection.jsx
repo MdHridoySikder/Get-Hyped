@@ -27,7 +27,6 @@ const IntroSection = () => {
     { scope: container },
   );
 
-  // 🔁 Hover → one-time down & up
   const handleEnter = () => {
     gsap.fromTo(
       arrowRef.current,
@@ -42,34 +41,31 @@ const IntroSection = () => {
     );
   };
 
-  // ⬇️ Click → SCROLL DOWN (FIXED)
   const handleClick = () => {
     window.scrollTo({
-      top: window.innerHeight * 2, // ⬅️ ensures DOWN scroll (not top only)
+      top: window.innerHeight * 2,
       behavior: "smooth",
     });
   };
 
   return (
-    <section
-      ref={container}
-      className="bg-brand-bg px-6 md:px-12 py-20 md:py-24 overflow-hidden"
-    >
+    <section className="bg-brand-bg px-4 md:px-12 py-20 md:py-24 overflow-hidden">
       <div className="max-w-[1380px] mx-auto">
-        {/* TOP BIG TEXT */}
-        <div className="ml-20">
-          <h2 className="text-2xl md:text-5xl font-semibold ">
-            Wij maken content die opvalt. Die<br></br> blijft hangen. Die jouw
-            doelgroep<br></br>raakt en jouw merk in beweging<br></br> brengt.
-            Snel, krachtig en energiek.
+        {/* TOP BIG TEXT - ml-20 maintain kora hoyeche */}
+        <div className="ml-10 md:ml-20">
+          <h2 className="text-xl md:text-5xl font-semibold leading-tight">
+            Wij maken content die opvalt. Die
+            <br /> blijft hangen. Die jouw doelgroep
+            <br /> raakt en jouw merk in beweging
+            <br /> brengt. Snel, krachtig en energiek.
           </h2>
         </div>
 
-        {/* BOTTOM AREA */}
-        <div className="mt-20 md:mt-20 grid grid-cols md:grid-cols-[300px_1fr_70px] gap-8 md:gap-20 items-end">
-          {/* IMAGE */}
-          <div className="flex justify-start">
-            <div className="w-[140px] h-[160px] md:w-[200px] md:h-[300px] rounded-[20px] overflow-hidden">
+        {/* BOTTOM AREA - Desktop er moto grid mobile e o fixed */}
+        <div className="mt-20 grid grid-cols-[auto_1fr_auto] gap-4 md:gap-20 items-end">
+          {/* IMAGE - Left Side */}
+          <div className="flex justify-start intro-anim">
+            <div className="w-[80px] h-[100px] md:w-[200px] md:h-[300px] rounded-[15px] md:rounded-[20px] overflow-hidden">
               <img
                 src="/p1.webp"
                 alt="team"
@@ -78,34 +74,42 @@ const IntroSection = () => {
             </div>
           </div>
 
-          {/* TEXT + BUTTON */}
-          <div className="max-w-[760px]">
-            <p className="text-xl md:text-2xl leading-[1.22] font-semibold tracking-tight text-brand-text">
-              We stoppen niet bij mooie plaatjes en<br></br> vette beelden. We
-              maken het meetbaar.<br></br> Zo weet je precies wat werkt en wat
-              niet.<br></br> Nooit meer content zonder strategie.<br></br> Nooit
-              meer content zonder resultaat.
+          {/* TEXT + BUTTON - Middle Area */}
+          <div className="max-w-[760px] intro-anim">
+            <p className="text-[14px] md:text-2xl leading-[1.2] md:leading-[1.22] font-semibold tracking-tight text-brand-text">
+              We stoppen niet bij mooie plaatjes en
+              <br className="hidden md:block" /> vette beelden. We maken het
+              meetbaar.
+              <br className="hidden md:block" /> Zo weet je precies wat werkt en
+              wat niet.
+              <br className="hidden md:block" /> Nooit meer content zonder
+              strategie.
+              <br className="hidden md:block" /> Nooit meer content zonder
+              resultaat.
             </p>
 
-            <a className="group mt-8 inline-flex items-center border border-black rounded-2xl overflow-hidden cursor-pointer">
-              <span className="px-3 py-2 text-lg font-medium text-brand-text transition-transform duration-300 ease-out group-hover:translate-y-1">
+            <a className="group mt-4 md:mt-8 inline-flex items-center border border-black rounded-xl md:rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ease-out hover:-rotate-6">
+              <span className="px-2 md:px-3 py-1 md:py-2 text-[12px] md:text-lg font-medium text-brand-text">
                 Leer ons kennen
               </span>
-
-              <span className="w-10 h-10 mr-0.5 rounded-xl bg-black text-white flex items-center justify-center transition-transform duration-300 ease-out group-hover:-translate-y-1">
-                <ArrowRight size={20} />
+              <span className="w-7 h-7 md:w-10 md:h-10 mr-0.5 rounded-lg md:rounded-xl bg-black text-white flex items-center justify-center">
+                <ArrowRight size={14} className="md:w-[20px]" />
               </span>
             </a>
           </div>
 
-          {/* DOWN BUTTON */}
+          {/* DOWN BUTTON - Right Side */}
           <div className="intro-anim flex justify-end">
             <button
               onMouseEnter={handleEnter}
               onClick={handleClick}
-              className="group w-12 h-12 rounded-2xl border border-black flex items-center justify-center cursor-pointer"
+              className="group w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-2xl border border-black flex items-center justify-center cursor-pointer"
             >
-              <ArrowDown ref={arrowRef} size={20} className="text-orange-500" />
+              <ArrowDown
+                ref={arrowRef}
+                size={16}
+                className="text-orange-500 md:w-[20px]"
+              />
             </button>
           </div>
         </div>

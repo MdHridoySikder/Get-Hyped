@@ -11,12 +11,12 @@ const expertises = [
     label: "Expertise",
     title: "Social strategy",
     subtitle: "Slimme strategie. Sterke start.",
-    desc: "We duiken diep in jouw merk, doelgroep en doelen. En vertalen data naar een duidelijk plan met formats die écht impact maken. Zo weet je precies waarom het werkt.",
+    desc: "We duiken diep in jouw merk, doelgroep en doelen. En vertalen data naar een duidelijk plan met formats die écht impact maken.",
     bgColor: "bg-[#F9F9F9]",
     textColor: "text-[#1A1A1A]",
     btnBg: "bg-[#FF5C2C]",
     link: "Meer over social strategie",
-    media: "/public/card01.mp4",
+    media: "/card01.mp4",
   },
   {
     id: "02",
@@ -24,23 +24,23 @@ const expertises = [
     title: "Content creation",
     subtitle: "Creatieve content. Impactvol resultaat.",
     desc: "We maken content die opvalt. Blijft hangen. En jouw doelgroep raakt. Creatief, snel en energiek. Altijd met het doel voor ogen.",
-    bgColor: "bg-[#FFD1D1]",
-    textColor: "text-[#1A1A1A]",
-    btnBg: "bg-[#FF5C2C]",
+    bgColor: "bg-[#F6B3F7]",
+    textColor: "text-[#000000]",
+    btnBg: "bg-black text-white",
     link: "Meer over content creatie",
-    media: "/public/card02.mp4",
+    media: "/card02.mp4",
   },
   {
     id: "03",
     label: "Expertise",
     title: "Activation",
     subtitle: "",
-    desc: "De juiste content verdient het om gezien te worden. We verspreiden de content waar jouw doelgroep is. Zo raakt jouw merk de juiste mensen, precies waar en wanneer het telt.",
+    desc: "De juiste content verdient het om gezien te worden. We verspreiden de content waar jouw doelgroep is. Zo raakt jouw merk de juiste mensen.",
     bgColor: "bg-brand-green",
     textColor: "text-brand-text",
     btnBg: "bg-black",
     link: "Meer over activatie",
-    media: "/public/card03.mp4",
+    media: "/card03.mp4",
   },
   {
     id: "04",
@@ -52,9 +52,10 @@ const expertises = [
     textColor: "text-white",
     btnBg: "bg-black",
     link: "Meer over data",
-    media: "/public/card04.mp4",
+    media: "/card04.mp4",
   },
 ];
+
 const ExpertisesSection = () => {
   const container = useRef();
   const cardsRef = useRef([]);
@@ -62,7 +63,6 @@ const ExpertisesSection = () => {
   useGSAP(
     () => {
       const cards = cardsRef.current;
-
       cards.forEach((card, i) => {
         ScrollTrigger.create({
           trigger: card,
@@ -90,80 +90,57 @@ const ExpertisesSection = () => {
     { scope: container },
   );
 
-  // 3. INTERACTION HELPERS
-  const onMouseEnter = (index) => {
-    gsap.to(cardsRef.current[index], {
-      y: -10,
-      scale: 1.01,
-      duration: 0.5,
-      ease: "power3.out",
-    });
-  };
-
-  const onMouseLeave = (index) => {
-    gsap.to(cardsRef.current[index], {
-      y: 0,
-      scale: 1,
-      duration: 0.5,
-      ease: "power3.out",
-    });
-  };
-
   return (
     <section
       ref={container}
       className="relative w-full mt-10 bg-brand-bg pb-[10vh]"
     >
-      {/* Header Space */}
-
-      {/* Cards Stack */}
       <div className="flex flex-col items-center">
         {expertises.map((item, index) => (
           <div
             key={item.id}
             ref={(el) => (cardsRef.current[index] = el)}
-            onMouseEnter={() => onMouseEnter(index)}
-            onMouseLeave={() => onMouseLeave(index)}
-            className={`relative w-[95%] h-[85vh] md:h-[80vh] ${item.bgColor} ${item.textColor} 
-                       rounded-[3rem] mb-[5vh] p-8 md:p-20 shadow-2xl flex flex-col md:flex-row 
-                       justify-between items-center overflow-hidden border border-black/5`}
+            className={`relative w-[95%] h-[80vh] ${item.bgColor} ${item.textColor} 
+                       rounded-[2.5rem] md:rounded-[3rem] mb-[5vh] p-6 md:p-20 shadow-2xl 
+                       flex flex-row justify-between items-center overflow-hidden border border-black/5`}
           >
             {/* Background ID */}
-            <div className="absolute top-2 right-3 text-5xl md:text-7xl font-bold text-orange-100 leading-none select-none pointer-events-none pr-8 pt-8">
+            <div className="absolute top-4 right-6 text-4xl md:text-7xl font-bold text-orange-100/50 leading-none select-none pointer-events-none">
               {item.id}
             </div>
 
-            {/* Left side: Text Content */}
-            <div className="inner-content flex flex-col items-start gap-6 max-w-2xl z-10">
-              <span className="px-4 py-1.5 bg-black/5 rounded-lg text-sm font-bold  tracking-widest opacity-60">
+            {/* Left side: Text Content - Mobile e 70% width nibe */}
+            <div className="flex flex-col items-start gap-3 md:gap-6 w-[65%] md:max-w-2xl z-10">
+              <span className="px-3 py-1 bg-black/5 rounded-lg text-[10px] md:text-sm font-bold tracking-widest opacity-60 uppercase">
                 {item.label}
               </span>
 
-              <h3 className="text-4xl md:text-6xl font-bold tracking-tighter leading-[0.8] uppercase">
+              <h3 className="text-2xl md:text-6xl font-bold tracking-tighter leading-none uppercase">
                 {item.title}
               </h3>
 
-              <div className="mt-15 space-y-4">
-                <h4 className="text-2xl md:text-2xl font-bold italic opacity-90 text-black">
-                  {item.subtitle}
-                </h4>
-                <p className="text-xl md:text-xl font-medium mr-80 ">
+              <div className="mt-2 md:mt-10 space-y-2 md:space-y-4">
+                {item.subtitle && (
+                  <h4 className="text-sm md:text-2xl font-bold italic opacity-90">
+                    {item.subtitle}
+                  </h4>
+                )}
+                <p className="text-[12px] md:text-xl font-medium leading-tight md:mr-40 line-clamp-3 md:line-clamp-none">
                   {item.desc}
                 </p>
-                {/* Action Button */}
+
                 <button
-                  className={`${item.btnBg} text-white px-6 py-3 rounded-xl flex items-center gap-4 font-bold text-sm mt- 
-                           hover:pr-8 transition-all duration-500 group`}
+                  className={`${item.btnBg} text-white px-3 py-1.5 md:px-5 md:py-2 rounded-xl md:rounded-2xl flex items-center gap-2 md:gap-4 font-bold text-[10px] md:text-sm transition-all duration-300 ease-out hover:-rotate-5 hover:scale-105 group whitespace-nowrap`}
                 >
-                  {item.link}
-                  <div className="bg-white rounded-full p-1.5 text-black group-hover:rotate-40 transition-transform duration-300">
+                  <span>{item.link}</span>
+                  <div className="bg-white rounded-lg p-1 text-black">
                     <svg
-                      width="20"
-                      height="20"
+                      width="12"
+                      height="12"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="3"
+                      strokeWidth="4"
                     >
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
@@ -172,16 +149,16 @@ const ExpertisesSection = () => {
               </div>
             </div>
 
-            {/* Right side: Floating Media Section */}
-            <div className="floating-image relative z-10 w-full md:w-[280px] aspect-[4/5] mt-10 md:mt-0">
-              <div className="w-full h-full border-[8px] border-[#FF5C2C] rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] transform transition-transform duration-700 hover:rotate-0 rotate-3">
+            {/* Right side: Floating Media Section - Mobile e 30% width nibe */}
+            <div className="relative z-10 w-[30%] md:w-[280px] aspect-[4/5]">
+              <div className="w-full h-full border-[4px] md:border-[8px] border-[#FF5C2C] rounded-[1.2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl transform rotate-3">
                 <video
                   src={item.media}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-700"
+                  className="w-full h-full object-cover"
                 ></video>
               </div>
             </div>
